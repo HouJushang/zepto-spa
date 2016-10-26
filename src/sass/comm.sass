@@ -1,0 +1,22 @@
+$animateTime: 300ms
+body, html
+  height: 100%
+
+.container
+  max-width: 400px
+  margin: 0 auto
+  background-color: #ccc
+  height: 100%
+  position: relative
+
+.app_left,.app_right,#app
+  position: absolute
+  width: 100%
+  top: 0
+  transition: left $animateTime linear
+.app_left
+  left: -100%
+.app_right
+  left: 100%
+.app
+  left: 0

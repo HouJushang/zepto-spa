@@ -7,6 +7,10 @@ module.exports = {
         path: __dirname,
         filename: 'bundle.js'
     },
+    devtool: 'source-map',
+    node: {
+        fs: "empty"
+    },
     module: {
         loaders: [
             {
@@ -20,6 +24,10 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'raw-loader'
+            },
+            {
+                test: /\.sass$/,
+                loaders: ["style", "css", "sass"]
             }
         ]
     }

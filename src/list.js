@@ -1,14 +1,13 @@
-import './sass/main.sass'
 import Page from '../framwork/Page'
 export default new Page({
-    id: 'index',
-    tpl: require('./tpl/index.html'),
-    router: '/index',
+    id: 'list',
+    tpl: require('./tpl/list.html'),
+    router: '/list',
     before(){
         alert(1);
     },
     init(){
-        this.submit();
+
     },
     after(){
         alert(1);
