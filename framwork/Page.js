@@ -12,18 +12,19 @@ export default class Page {
         Object.assign(self, obj);
         router.add(obj.id, {
             url: obj.router,
-            ctrl(){
+            ctrl(parm){
+                self.parm = parm
                 self.before();
-                self.changePage(Page.initHtml(obj.tpl, {b: '', a: '222'}), 'right');
+                Page.changePage(Page.initHtml(obj.tpl, obj.data), router.animate);
             }
         })
         self.init();
     }
-    changePage(html, type) {
+    static changePage(html, type) {
         var appDom = $(`.app`);
         if (type) {
             let typeClass = `app_${type}`;
-            let type2Class = type == 'left' ? `app_right` : 'app_left';
+            let type2Class = type == 'left' ? 'app_right' : 'app_left';
 
             $(`<div class='${typeClass}'></div>`).html(html).appendTo('.container');
             var typeDom = $(`.${typeClass}`);
@@ -33,9 +34,11 @@ export default class Page {
                 typeDom.removeClass(typeClass).addClass('app');
                 setTimeout(()=> {
                     appDom.remove();
-                    this.after();
+                    if(typeof after == 'function'){
+                        this.after();
+                    }
                 }, 300)
-            }, 1)
+            }, 20)
         } else {
             $('.app').html(html);
         }
@@ -46,10 +49,6 @@ export default class Page {
         let template = Handlebars.compile(tpl);
         let html = template(data);
         return html;
-    }
-
-    static changePage() {
-        alert(1);
     }
 }
 

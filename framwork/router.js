@@ -4,6 +4,7 @@ function Router() {
         self.do(window.location.hash);
     };
     self.router = [];
+    self.animate = '';
 };
 Router.prototype.add = function (name, data) {
     var isAdd = true;
@@ -58,5 +59,9 @@ Router.prototype.default = function (name) {
 Router.prototype.complete = function () {
     this.do(window.location.hash);
 };
-
+//a url e type
+Router.prototype.changePage = function (a,e) {
+    this.animate = e;
+    location.hash = a;
+};
 export default new Router();

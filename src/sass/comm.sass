@@ -2,20 +2,33 @@ $animateTime: 300ms
 $themeColor: #3889d8
 body, html
   height: 100%
+
 .container
   max-width: 400px
   margin: 0 auto
   height: 100%
   position: relative
 
-.app_left,.app_right,.app
+.app_left, .app_right, .app
   position: absolute
   width: 100%
   top: 0
   transition: left $animateTime linear
+
 .app_left
   left: -100%
+
 .app_right
   left: 100%
+
 .app
   left: 0
+
+header
+  height: 50px
+  text-align: center
+  background-color: $themeColor
+  color: #fff
+  line-height: 51px
+  span
+    float: left

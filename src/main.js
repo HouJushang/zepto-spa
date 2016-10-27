@@ -1,8 +1,8 @@
 /**
  * Created by hou on 2016/10/25.
  */
-import './index'
-import './list'
 import './trainNumber'
+import './trainNumberResult'
+import './sass/main.sass'
 import router from '../framwork/router'
-router.default('index').complete();
+router.default('trainNumber').complete();
