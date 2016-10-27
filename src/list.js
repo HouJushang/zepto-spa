@@ -3,16 +3,16 @@ export default new Page({
     id: 'list',
     tpl: require('./tpl/list.html'),
     router: '/list',
+    init(){
+        console.log('init');
+    },
     before(){
         alert(1);
     },
-    init(){
-
-    },
     after(){
-        alert(1);
+        // alert(1);
     },
     submit(){
-        alert(1);
+        // alert(1);
     }
 });

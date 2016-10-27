@@ -4,16 +4,13 @@ export default new Page({
     id: 'index',
     tpl: require('./tpl/index.html'),
     router: '/index',
-    before(){
-        alert(1);
-    },
     init(){
-        this.submit();
+        // console.log('init')
+    },
+    before(){
+        // console.log('befor');
     },
     after(){
-        alert(1);
-    },
-    submit(){
-        alert(1);
+        // console.log('after');
     }
 });

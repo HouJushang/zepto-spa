@@ -13,22 +13,27 @@ export default class Page {
         router.add(obj.id, {
             url: obj.router,
             ctrl(){
-                console.log(obj.router + '路由切换成功');
+                self.before();
                 self.changePage(Page.initHtml(obj.tpl, {b: '', a: '222'}), 'right');
             }
         })
+        self.init();
     }
     changePage(html, type) {
         var appDom = $(`.app`);
         if (type) {
-            let type2 = type == 'left' ? 'right' : 'left';
-            $(`<div id="app" class="app_${type}"></div>`).html(html).appendTo('.container');
-            var typeDom = $(`.app_${type}`);
+            let typeClass = `app_${type}`;
+            let type2Class = type == 'left' ? `app_right` : 'app_left';
+
+            $(`<div class='${typeClass}'></div>`).html(html).appendTo('.container');
+            var typeDom = $(`.${typeClass}`);
+
             setTimeout(()=> {
-                appDom.removeClass('app').addClass(`app_${type2}`);
-                typeDom.removeClass(`app_${type}`).addClass('app');
+                appDom.removeClass('app').addClass(type2Class);
+                typeDom.removeClass(typeClass).addClass('app');
                 setTimeout(()=> {
                     appDom.remove();
+                    this.after();
                 }, 300)
             }, 1)
         } else {
